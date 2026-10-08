@@ -1,6 +1,8 @@
 #include "Span.hpp"
 #include <climits>
 #include <algorithm>
+// #include <exception>
+#include <stdexcept>
 
 Span::Span(unsigned int N) : arr(), n(N)
 {
@@ -14,14 +16,14 @@ Span::~Span()
 void Span::addNumber(int num)
 {
 	if (n == arr.size())
-		throw ;
+		throw (std::out_of_range("Span is full"));
 	arr.push_back(num);
 }
 
 int Span::shortestSpan() const
 {
 	if (arr.size() < 2)
-		throw ;
+		throw (std::out_of_range("Span has less than 2 elements"));
 	std::vector<int> tmp = arr;
 
 	std::sort(tmp.begin(), tmp.end());
@@ -36,7 +38,7 @@ int Span::shortestSpan() const
 int Span::longestSpan() const
 {
 	if (arr.size() < 2)
-		throw ;
+		throw (std::out_of_range("Span has less than 2 elements"));
 	std::vector<int> tmp = arr;
 
 	std::sort(tmp.begin(), tmp.end());

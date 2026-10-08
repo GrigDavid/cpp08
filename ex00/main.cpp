@@ -12,6 +12,6 @@ int main()
 	a.push_back(2);
 	a.push_back(0);
 
-	std::cout << *(--easyfind(a, 20)) << std::endl;
+	std::cout << *(easyfind(a, 22)) << std::endl;
 	return (0);
 }

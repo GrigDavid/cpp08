@@ -8,6 +8,8 @@ template <typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>
 {
 	public:
+		typedef typename Container::iterator iterator;
+		typedef typename Container::const_iterator const_iterator;
 		MutantStack();
 		MutantStack(const MutantStack& other);
 		MutantStack& operator=(const MutantStack& other);
