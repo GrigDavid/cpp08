@@ -1,16 +1,50 @@
 #include "MutantStack.hpp"
 #include <iostream>
+
 int main()
 {
-	MutantStack<int> a;
-	for (int i = 0; i < 13; i++)
-		a.push(i);
-	MutantStack<int>::iterator j = a.begin();
-	std::cout << *(a.begin()) << "\n" << *j << std::endl;
-	const MutantStack<int> b(a);
+	// MutantStack<int> mstack;
+	// mstack.push(5);
+	// mstack.push(17);
+	// std::cout << mstack.top() << std::endl;
+	// mstack.pop();
+	// std::cout << mstack.size() << std::endl;
+	// mstack.push(3);
+	// mstack.push(5);
+	// mstack.push(737);
+	// //[...]
+	// mstack.push(0);
+	// MutantStack<int>::iterator it = mstack.begin();
+	// MutantStack<int>::iterator ite = mstack.end();
+	// ++it;
+	// --it;
+	// while (it != ite)
+	// {
+	// std::cout << *it << std::endl;
+	// ++it;
+	// }
+	// std::stack<int> s(mstack);
 
-	MutantStack<int>::const_iterator p = b.begin();
-	std::cout << *(b.begin()) << "\n" << *p << std::endl;
 
-	
+	MutantStack<int> mstack;
+
+	for (int i = 0; i < 10; i++)
+	{
+		mstack.push(i * 2);
+	}
+	std::cout << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << mstack.top() << std::endl;
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	++it;
+	--it;
+	while (it != ite)
+	{
+	std::cout << *it << std::endl;
+	++it;
+	}
+	std::stack<int> s(mstack);
+	return 0;
+
 }

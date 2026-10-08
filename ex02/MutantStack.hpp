@@ -12,9 +12,10 @@ class MutantStack : public std::stack<T, Container>
 		typedef typename Container::const_iterator const_iterator;
 		MutantStack();
 		MutantStack(const MutantStack& other);
-		MutantStack& operator=(const MutantStack& other);
-		virtual ~MutantStack();
+		~MutantStack();
 		
+		MutantStack& operator=(const MutantStack& other);
+
 		typename Container::iterator begin();
 		typename Container::iterator end();
 

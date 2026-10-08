@@ -1,16 +1,32 @@
 #include "Span.hpp"
-#include <climits>
 #include <algorithm>
-// #include <exception>
 #include <stdexcept>
 
+
+Span::Span() : arr(), n(0)
+{
+}
 Span::Span(unsigned int N) : arr(), n(N)
 {
 }
 
+Span::Span(const Span& other) : arr(other.arr), n(other.n)
+{
+}
+
+Span&	Span::operator=(const Span& other)
+{
+	if (this == &other)
+		return (*this);
+	if (other.arr.size() > n)
+		throw(std::out_of_range("Span size is too small"));
+	arr = other.arr;
+	return (*this);
+}
+
 Span::~Span()
 {
-};
+}
 
 
 void Span::addNumber(int num)

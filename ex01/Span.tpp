@@ -1,3 +1,5 @@
+#include <iterator>
+
 template <typename Iterator>
 void Span::fill(Iterator begin, Iterator end)
 {

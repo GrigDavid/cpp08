@@ -2,15 +2,17 @@
 #define SPAN_HPP
 
 #include <vector>
-#include <climits>
-#include <algorithm>
-#include <stdexcept>
 
 class Span
 {
 	public:
+		Span();
 		Span(unsigned int N);
+		Span(const Span& other);
 		~Span();
+
+		Span& operator=(const Span& other);
+
 		void addNumber(int num);
 		int shortestSpan() const;
 		int longestSpan() const;
