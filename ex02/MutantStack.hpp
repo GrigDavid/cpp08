@@ -12,26 +12,28 @@ class MutantStack : public std::stack<T, Container>
 		typedef typename Container::const_iterator const_iterator;
 		typedef typename Container::reverse_iterator reverse_iterator;
 		typedef typename Container::const_reverse_iterator const_reverse_iterator;
-		MutantStack();
-		MutantStack(const MutantStack& other);
-		~MutantStack();
+		MutantStack() : std::stack<T, Container>() {}
+		MutantStack(const MutantStack& other) : std::stack<T, Container>(other) {}
+		~MutantStack() {}
 		
-		MutantStack& operator=(const MutantStack& other);
+		MutantStack& operator=(const MutantStack& other) 
+		{
+			std::stack<T, Container>::operator=(other);
+			return (*this);
+		}
 
-		typename Container::iterator begin();
-		typename Container::iterator end();
+		iterator begin() { return (this->c.begin()); }
+		iterator end() { return (this->c.end()); }
 
-		typename Container::const_iterator begin() const;
-		typename Container::const_iterator end() const;
+		const_iterator begin() const { return (this->c.begin()); }
+		const_iterator end() const { return (this->c.end()); }
 
 
-		typename Container::reverse_iterator rbegin();
-		typename Container::reverse_iterator rend();
+		reverse_iterator rbegin() { return (this->c.rbegin()); }
+		reverse_iterator rend() { return (this->c.rend()); }
 
-		typename Container::const_reverse_iterator rbegin() const;
-		typename Container::const_reverse_iterator rend() const;
+		const_reverse_iterator rbegin() const { return (this->c.rbegin()); }
+		const_reverse_iterator rend() const { return (this->c.rend()); }
 };
-
-#include "MutantStack.tpp"
 
 #endif
