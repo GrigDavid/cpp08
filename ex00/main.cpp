@@ -12,6 +12,10 @@ int main()
 	a.push_back(2);
 	a.push_back(0);
 
-	std::cout << *(easyfind(a, 22)) << std::endl;
+	std::cout << *(--easyfind(a, 22)) << std::endl;
+
+	const std::vector<int> b (a);
+
+	std::cout << *(++easyfind(b, 10)) << std::endl;
 	return (0);
 }

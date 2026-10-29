@@ -2,11 +2,13 @@
 #define SPAN_HPP
 
 #include <vector>
+#include <stdexcept>
+#include <iterator>
+#include <cstddef>
 
 class Span
 {
 	public:
-		Span();
 		Span(unsigned int N);
 		Span(const Span& other);
 		~Span();
@@ -17,12 +19,23 @@ class Span
 		int shortestSpan() const;
 		int longestSpan() const;
 		template <typename Iterator>
-		void fill(Iterator begin, Iterator end);
+		void addRange(Iterator begin, Iterator end);
 	private:
+		Span();
 		std::vector<int> arr;
-		const unsigned int n;
+		unsigned int n;
 };
 
-#include "Span.tpp"
+template <typename Iterator>
+void Span::addRange(Iterator begin, Iterator end)
+{
+	if (arr.size() + static_cast<size_t>(std::distance(begin, end)) > n)
+		throw (std::out_of_range("Span is full"));
+	while (begin != end)
+	{
+		arr.push_back(*begin);
+		++begin;
+	}
+}
 
 #endif
